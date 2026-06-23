@@ -5,282 +5,285 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valijon Do'sov — Backend Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#06090f;
-  --bg2:#0b0f18;
-  --bg3:#111620;
-  --border:#1a2030;
-  --border2:#222c3c;
-  --blue:#4d9fff;
-  --blue-dim:#2563eb;
-  --blue-glow:rgba(77,159,255,0.12);
-  --text:#dde4f0;
-  --muted:#4a5a72;
-  --muted2:#6b7d96;
-  --mono:'JetBrains Mono',monospace;
-  --sans:'Space Grotesk',sans-serif;
+  --bg:    #0a0c10;
+  --bg2:   #0f1117;
+  --bg3:   #151820;
+  --card:  #13161e;
+  --line:  #1c2030;
+  --line2: #242838;
+  --g:     #22c55e;   /* green accent — used sparingly */
+  --g2:    #16a34a;
+  --text:  #e8eaf0;
+  --sub:   #9aa3b8;
+  --dim:   #4a5268;
+  --mono:  'JetBrains Mono', monospace;
+  --sans:  'Sora', sans-serif;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.7;overflow-x:hidden}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+::-webkit-scrollbar-thumb{background:var(--line2)}
 
-/* ── NAV ── */
+/* ─── NAV ─── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 56px;height:58px;
-  border-bottom:1px solid var(--border);
-  background:rgba(6,9,15,0.9);
-  backdrop-filter:blur(20px);
+  padding:0 60px;height:56px;
+  border-bottom:1px solid var(--line);
+  background:rgba(10,12,16,0.88);
+  backdrop-filter:blur(18px);
 }
-.nav-logo{
-  font-family:var(--mono);font-size:0.82rem;font-weight:600;
-  color:var(--blue);letter-spacing:0.06em;
-}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{
-  font-family:var(--mono);font-size:0.75rem;color:var(--muted2);
-  text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;
-  transition:color 0.2s;
-}
+.logo{font-family:var(--mono);font-size:0.8rem;color:var(--g);letter-spacing:0.08em}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:0.72rem;color:var(--dim);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 
-/* ── HERO ── */
+/* ─── HERO ─── */
 .hero{
-  min-height:100vh;
-  display:flex;align-items:center;
-  padding:100px 56px 80px;
-  position:relative;overflow:hidden;
+  min-height:100vh;display:flex;align-items:center;
+  padding:110px 60px 80px;
 }
-/* ambient glow */
-.hero::after{
-  content:'';position:absolute;
-  top:10%;right:5%;
-  width:500px;height:500px;
-  background:radial-gradient(circle,rgba(77,159,255,0.07) 0%,transparent 65%);
-  pointer-events:none;border-radius:50%;
-}
-.hero-inner{max-width:780px;width:100%}
+.hero-inner{max-width:760px}
 
-.hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--mono);font-size:0.72rem;
-  color:var(--blue);letter-spacing:0.14em;text-transform:uppercase;
-  margin-bottom:32px;
+.avail{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:0.7rem;color:var(--sub);
+  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:32px;
 }
-.hero-tag::before{content:'';display:block;width:24px;height:1px;background:var(--blue);opacity:0.6}
+.pulse{
+  width:7px;height:7px;border-radius:50%;background:var(--g);
+  animation:glow 2s ease-in-out infinite;
+}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}
+  50%{box-shadow:0 0 0 7px rgba(34,197,94,0)}
+}
 
-/* TYPING NAME */
 .hero-name{
   font-family:var(--sans);
-  font-size:clamp(3rem,7vw,5.5rem);
-  font-weight:700;
-  line-height:1.0;
-  letter-spacing:-0.03em;
-  margin-bottom:10px;
-  color:var(--text);
+  font-size:clamp(3.2rem,7vw,6rem);
+  font-weight:700;line-height:0.95;
+  letter-spacing:-0.04em;
+  margin-bottom:20px;color:var(--text);
+  min-height:1.05em;
 }
-.hero-name .typed-text{color:var(--blue)}
-.typing-cursor{
-  display:inline-block;
-  width:3px;
-  background:var(--blue);
-  margin-left:3px;
-  vertical-align:baseline;
-  animation:blink 0.9s step-end infinite;
-  border-radius:1px;
+.hero-name .typed{color:var(--g)}
+.cur{
+  display:inline-block;width:4px;height:.85em;
+  background:var(--g);margin-left:4px;
+  vertical-align:middle;border-radius:2px;
+  animation:blink .9s step-end infinite;
 }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 .hero-role{
-  font-family:var(--mono);font-size:0.9rem;
-  color:var(--muted2);letter-spacing:0.06em;
-  margin-bottom:28px;
+  font-family:var(--mono);font-size:0.82rem;
+  color:var(--dim);letter-spacing:0.06em;margin-bottom:22px;
 }
+
 .hero-desc{
-  font-size:1.05rem;color:var(--muted2);
-  max-width:520px;line-height:1.75;margin-bottom:44px;
+  font-size:1rem;color:var(--sub);
+  max-width:500px;line-height:1.8;margin-bottom:40px;
   font-weight:400;
 }
-.hero-desc strong{color:var(--text);font-weight:500}
+.hero-desc b{color:var(--text);font-weight:600}
 
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px}
 .btn{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:11px 24px;border-radius:7px;
-  font-family:var(--mono);font-size:0.8rem;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 22px;border-radius:6px;
+  font-family:var(--mono);font-size:0.77rem;font-weight:600;
   letter-spacing:0.04em;text-decoration:none;
-  transition:all 0.2s;cursor:pointer;border:none;
+  transition:all .2s;cursor:pointer;border:none;
 }
-.btn-primary{background:var(--blue);color:#06090f}
-.btn-primary:hover{background:#6aafff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(77,159,255,0.25)}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2)}
-.btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+.btn-p{background:var(--g);color:#0a0c10}
+.btn-p:hover{background:#4ade80;box-shadow:0 6px 24px rgba(34,197,94,.25);transform:translateY(-1px)}
+.btn-o{background:transparent;color:var(--sub);border:1px solid var(--line2)}
+.btn-o:hover{border-color:var(--line2);color:var(--text)}
 
-/* hero stats */
-.hero-stats{
-  display:flex;gap:40px;margin-top:52px;
-  padding-top:40px;
-  border-top:1px solid var(--border);
+/* COUNTERS — minimal strip */
+.counters{
+  display:flex;gap:0;
+  border:1px solid var(--line2);border-radius:10px;
+  overflow:hidden;width:fit-content;
+  background:var(--card);
 }
-.stat-val{
-  font-family:var(--mono);font-size:1.8rem;font-weight:700;
-  color:var(--blue);line-height:1;margin-bottom:4px;
+.ctr{
+  padding:18px 28px;
+  border-right:1px solid var(--line2);
 }
-.stat-label{font-size:0.8rem;color:var(--muted);letter-spacing:0.05em}
+.ctr:last-child{border-right:none}
+.ctr-val{
+  font-family:var(--mono);font-size:1.6rem;font-weight:600;
+  color:var(--text);line-height:1;margin-bottom:5px;
+  display:flex;align-items:baseline;gap:2px;
+}
+.ctr-val .u{font-size:.9rem;color:var(--dim);font-weight:400}
+.ctr-lbl{font-size:0.73rem;color:var(--dim);letter-spacing:0.04em}
 
-/* ── SHARED ── */
-.sec{padding:96px 56px}
-.container{max-width:960px;margin:0 auto}
-.sec-eyebrow{
-  font-family:var(--mono);font-size:0.7rem;
+/* ─── SECTION SHARED ─── */
+.sec{padding:90px 60px}
+.wrap{max-width:960px;margin:0 auto}
+.eyebrow{
+  font-family:var(--mono);font-size:0.68rem;
   letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:10px;opacity:0.8;
+  color:var(--g);margin-bottom:8px;
 }
 .sec-title{
-  font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;
-  letter-spacing:-0.02em;margin-bottom:52px;
-  color:var(--text);
+  font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;
+  letter-spacing:-0.02em;color:var(--text);margin-bottom:44px;
 }
 
-/* ── EXPERIENCE ── */
+/* ─── EXPERIENCE ─── */
 #experience{background:var(--bg2)}
-.exp-card{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:12px;padding:36px;
-  display:grid;grid-template-columns:1fr auto;gap:16px;
-  position:relative;overflow:hidden;
+.exp-box{
+  background:var(--card);border:1px solid var(--line2);
+  border-radius:12px;padding:36px 40px;
+  position:relative;
 }
-.exp-card::before{
-  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
-  background:linear-gradient(180deg,var(--blue),transparent);
+.exp-box::after{
+  content:'';position:absolute;left:0;top:20px;bottom:20px;width:2px;
+  background:var(--g);border-radius:0 2px 2px 0;opacity:.7;
 }
-.exp-company{font-family:var(--mono);font-size:0.75rem;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
-.exp-role{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:12px}
-.exp-period{
-  font-family:var(--mono);font-size:0.72rem;color:var(--muted);
-  background:var(--bg2);border:1px solid var(--border);
-  padding:4px 12px;border-radius:20px;height:fit-content;white-space:nowrap;
-}
-.exp-desc{font-size:0.9rem;color:var(--muted2);line-height:1.7;margin-bottom:20px}
-.exp-tags{display:flex;flex-wrap:wrap;gap:7px}
-.tag{
-  font-family:var(--mono);font-size:0.68rem;
-  padding:4px 11px;border-radius:5px;
-  background:rgba(77,159,255,0.08);
-  border:1px solid rgba(77,159,255,0.18);
-  color:var(--blue);letter-spacing:0.04em;
-}
-
-/* ── PROJECTS ── */
-#projects{background:var(--bg)}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
-.proj-card{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:10px;padding:28px;
-  display:flex;flex-direction:column;
-  transition:transform 0.22s,border-color 0.22s,box-shadow 0.22s;
-  cursor:default;
-}
-.proj-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(77,159,255,0.35);
-  box-shadow:0 12px 32px rgba(0,0,0,0.3);
-}
-.proj-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
-.proj-icon{
-  width:40px;height:40px;border-radius:8px;
-  background:var(--blue-glow);border:1px solid rgba(77,159,255,0.2);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--blue);font-size:1rem;
-}
-.proj-links a{color:var(--muted);font-size:0.95rem;text-decoration:none;transition:color 0.2s}
-.proj-links a:hover{color:var(--blue)}
-.proj-name{font-size:0.98rem;font-weight:700;color:var(--text);margin-bottom:8px}
-.proj-desc{font-size:0.85rem;color:var(--muted2);line-height:1.65;flex:1}
-.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
-
-/* ── SKILLS ── */
-#skills{background:var(--bg2)}
-.skills-sections{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
-.skill-group{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:10px;padding:24px;
-}
-.skill-group-title{
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;flex-wrap:wrap;gap:12px}
+.exp-co{font-family:var(--mono);font-size:0.7rem;color:var(--g);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.exp-role{font-size:1.1rem;font-weight:700;color:var(--text)}
+.exp-badge{
   font-family:var(--mono);font-size:0.7rem;
-  letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:16px;opacity:0.8;
+  color:var(--sub);background:var(--bg3);
+  border:1px solid var(--line2);
+  padding:5px 14px;border-radius:20px;
+  display:flex;align-items:center;gap:7px;white-space:nowrap;
 }
-.skill-list{display:flex;flex-direction:column;gap:10px}
-.skill-row{display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--text)}
-.skill-row i{color:var(--blue);width:16px;text-align:center;font-size:0.85rem}
+.exp-badge .pulse{width:6px;height:6px}
+.exp-txt{font-size:0.88rem;color:var(--sub);line-height:1.78;margin-bottom:22px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-family:var(--mono);font-size:0.65rem;
+  padding:3px 10px;border-radius:4px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--line2);
+  color:var(--sub);letter-spacing:.04em;
+}
 
-/* ── CONTACT ── */
+/* ─── PROJECTS — timeline ─── */
+#projects{background:var(--bg)}
+.tl{display:flex;flex-direction:column;position:relative}
+.tl::before{
+  content:'';position:absolute;left:18px;top:8px;bottom:8px;width:1px;
+  background:linear-gradient(180deg,var(--g) 0%,var(--line2) 100%);
+}
+.tl-item{display:grid;grid-template-columns:38px 1fr;gap:20px;padding-bottom:36px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot-col{display:flex;justify-content:center;padding-top:6px}
+.tl-dot{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--g);border:2px solid var(--bg);
+  box-shadow:0 0 0 2px var(--g);
+  flex-shrink:0;position:relative;z-index:1;
+}
+.tl-card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:26px 30px;
+  transition:border-color .2s,transform .2s;
+}
+.tl-card:hover{border-color:var(--line2);transform:translateX(3px)}
+.tl-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.tl-name{font-size:0.98rem;font-weight:700;color:var(--text)}
+.tl-role-badge{
+  font-family:var(--mono);font-size:0.64rem;color:var(--g);
+  border:1px solid rgba(34,197,94,.25);
+  background:rgba(34,197,94,.06);
+  padding:3px 9px;border-radius:4px;white-space:nowrap;flex-shrink:0;
+}
+.tl-desc{font-size:0.86rem;color:var(--sub);line-height:1.68;margin-bottom:14px}
+.bullets{list-style:none;margin-bottom:14px;display:flex;flex-direction:column;gap:5px}
+.bullets li{
+  font-size:0.82rem;color:var(--dim);
+  display:flex;gap:10px;align-items:flex-start;
+  transition:color .15s;
+}
+.bullets li:hover{color:var(--sub)}
+.bullets li::before{content:'→';color:var(--g);flex-shrink:0;font-family:var(--mono);font-size:.75rem;margin-top:2px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--bg2)}
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.sk-box{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:22px 24px}
+.sk-title{
+  font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:14px;
+}
+.sk-list{display:flex;flex-direction:column;gap:9px}
+.sk-row{
+  display:flex;align-items:center;gap:11px;
+  font-size:0.85rem;color:var(--sub);
+  transition:color .15s;
+}
+.sk-row:hover{color:var(--text)}
+.sk-row i{color:var(--g);width:15px;text-align:center;font-size:0.82rem;opacity:.75}
+
+/* ─── CONTACT ─── */
 #contact{background:var(--bg)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.contact-intro{font-size:0.95rem;color:var(--muted2);line-height:1.8;margin-bottom:28px}
-.contact-links{display:flex;flex-direction:column;gap:10px}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.ct-intro{font-size:0.92rem;color:var(--sub);line-height:1.85;margin-bottom:26px}
+.ct-links{display:flex;flex-direction:column;gap:9px}
 .clink{
-  display:flex;align-items:center;gap:14px;
-  padding:13px 18px;
-  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
-  text-decoration:none;color:var(--text);font-size:0.88rem;
-  transition:all 0.2s;
+  display:flex;align-items:center;gap:13px;
+  padding:13px 17px;
+  background:var(--card);border:1px solid var(--line);border-radius:8px;
+  text-decoration:none;color:var(--sub);font-size:0.86rem;
+  transition:all .2s;
 }
-.clink:hover{border-color:rgba(77,159,255,0.4);color:var(--blue);transform:translateX(5px)}
-.clink i{color:var(--blue);width:18px;text-align:center}
-.clink-sub{margin-left:auto;font-family:var(--mono);font-size:0.7rem;color:var(--muted)}
+.clink:hover{border-color:var(--line2);color:var(--text);transform:translateX(4px)}
+.clink i{color:var(--g);width:17px;text-align:center;opacity:.8}
+.clink-tag{margin-left:auto;font-family:var(--mono);font-size:0.66rem;color:var(--dim)}
 
-/* terminal */
-.term{background:var(--bg2);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.term{background:var(--bg2);border:1px solid var(--line2);border-radius:10px;overflow:hidden}
 .term-bar{
-  display:flex;align-items:center;gap:7px;
-  padding:11px 16px;background:var(--bg3);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:6px;
+  padding:10px 16px;background:var(--bg3);border-bottom:1px solid var(--line);
 }
-.dot{width:10px;height:10px;border-radius:50%}
-.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
-.term-label{font-family:var(--mono);font-size:0.7rem;color:var(--muted);margin:0 auto}
-.term-body{padding:22px 24px;font-family:var(--mono);font-size:0.79rem;line-height:2}
-.tp{color:var(--blue)}
-.tc{color:var(--text)}
-.to{color:var(--muted2)}
-.tv{color:#79c0ff}
-.ts{color:#a5d6a7}
+.tdot{width:9px;height:9px;border-radius:50%}
+.tdot-r{background:#ff5f57}.tdot-y{background:#febc2e}.tdot-g{background:#28c840}
+.term-t{font-family:var(--mono);font-size:0.67rem;color:var(--dim);margin:0 auto}
+.term-body{padding:20px 22px;font-family:var(--mono);font-size:0.77rem;line-height:2}
+.tp{color:var(--g)}.tc{color:var(--text)}.to{color:var(--dim)}.tv{color:#93c5fd}.ts{color:#86efac}
 
-/* ── FOOTER ── */
+/* ─── FOOTER ─── */
 footer{
-  padding:26px 56px;border-top:1px solid var(--border);
+  padding:22px 60px;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;align-items:center;
-  font-family:var(--mono);font-size:0.72rem;color:var(--muted);
+  font-family:var(--mono);font-size:0.69rem;color:var(--dim);
 }
-footer span{color:var(--blue)}
+footer span{color:var(--g)}
 
 @media(max-width:768px){
   nav{padding:0 20px}
-  .nav-links{gap:18px}
-  .nav-links a{font-size:0.68rem}
+  .nav-links{gap:16px}
   .hero,.sec{padding:80px 20px}
-  .hero-stats{gap:24px;flex-wrap:wrap}
-  .contact-grid{grid-template-columns:1fr;gap:32px}
-  .exp-card{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:6px;text-align:center;padding:20px}
+  .counters{width:100%;flex-wrap:wrap}
+  .ctr{border-right:none;border-bottom:1px solid var(--line2);width:50%}
+  .ctr:nth-child(odd){border-right:1px solid var(--line2)}
+  .ct-grid{grid-template-columns:1fr;gap:28px}
+  .tl-item{grid-template-columns:30px 1fr;gap:12px}
+  .exp-top{flex-direction:column}
+  footer{flex-direction:column;gap:5px;padding:18px 20px;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">vd.dev</div>
+  <div class="logo">vd.dev</div>
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -292,41 +295,39 @@ footer span{color:var(--blue)}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">Available for opportunities</div>
+    <div class="avail"><span class="pulse"></span> Available for work</div>
 
     <div class="hero-name">
-      <span class="typed-text" id="typed-name"></span><span class="typing-cursor" id="cursor"></span>
+      <span class="typed" id="typed"></span><span class="cur"></span>
     </div>
-    <div class="hero-role">Backend Developer · Urgench, Uzbekistan</div>
+    <div class="hero-role">Backend Developer &nbsp;·&nbsp; Urgench, Uzbekistan</div>
 
     <p class="hero-desc">
-      <strong>2+ years</strong> building production-grade systems — scalable REST APIs, real-time platforms with WebSockets, and AI-integrated business automation for the CIS market.
+      <b>Nearly 2 years</b> building production systems — scalable REST APIs, real-time WebSocket platforms, and AI-powered automation for the CIS market.
     </p>
 
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">
-        <i class="fa-solid fa-code-branch"></i> View Projects
-      </a>
-      <a href="https://github.com/VALIJONY" target="_blank" class="btn btn-ghost">
-        <i class="fa-brands fa-github"></i> GitHub
-      </a>
-      <a href="mailto:valijondosov@gmail.com" class="btn btn-ghost">
-        <i class="fa-solid fa-envelope"></i> Email
-      </a>
+    <div class="btns">
+      <a href="#projects" class="btn btn-p"><i class="fa-solid fa-code-branch"></i> Projects</a>
+      <a href="https://github.com/VALIJONY" target="_blank" class="btn btn-o"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="mailto:valijondosov@gmail.com" class="btn btn-o"><i class="fa-solid fa-envelope"></i> Email</a>
     </div>
 
-    <div class="hero-stats">
-      <div>
-        <div class="stat-val">2+</div>
-        <div class="stat-label">Years experience</div>
+    <div class="counters">
+      <div class="ctr">
+        <div class="ctr-val"><span id="cnt-mo">0</span><span class="u">&nbsp;mo</span></div>
+        <div class="ctr-lbl">Experience</div>
       </div>
-      <div>
-        <div class="stat-val">3</div>
-        <div class="stat-label">Production projects</div>
+      <div class="ctr">
+        <div class="ctr-val"><span id="cnt-days">0</span></div>
+        <div class="ctr-lbl">Days coding</div>
       </div>
-      <div>
-        <div class="stat-val">20+</div>
-        <div class="stat-label">Technologies</div>
+      <div class="ctr">
+        <div class="ctr-val">3</div>
+        <div class="ctr-lbl">Live projects</div>
+      </div>
+      <div class="ctr">
+        <div class="ctr-val">20<span class="u">+</span></div>
+        <div class="ctr-lbl">Technologies</div>
       </div>
     </div>
   </div>
@@ -334,87 +335,104 @@ footer span{color:var(--blue)}
 
 <!-- EXPERIENCE -->
 <section class="sec" id="experience">
-  <div class="container">
-    <div class="sec-eyebrow">Work</div>
+  <div class="wrap">
+    <div class="eyebrow">Work</div>
     <h2 class="sec-title">Experience</h2>
-    <div class="exp-card">
-      <div>
-        <div class="exp-company">IDGROUP · Urgench, Uzbekistan</div>
-        <div class="exp-role">Software Engineer</div>
-        <p class="exp-desc">
-          Designed and implemented production-grade backend systems and scalable REST APIs across multiple business domains. Built real-time communication layers using Django Channels and WebSockets. Integrated third-party services — AWS, Google Speech API, smart cameras, thermal printers. Managed Docker deployments on Linux, implemented JWT + RBAC auth systems, and led async task pipelines with Celery.
-        </p>
-        <div class="exp-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Django</span>
-          <span class="tag">DRF</span>
-          <span class="tag">Django Channels</span>
-          <span class="tag">WebSockets</span>
-          <span class="tag">Redis</span>
-          <span class="tag">Celery</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Docker</span>
-          <span class="tag">AWS</span>
-          <span class="tag">JWT / RBAC</span>
+    <div class="exp-box">
+      <div class="exp-top">
+        <div>
+          <div class="exp-co">IDGROUP · Urgench, Uzbekistan</div>
+          <div class="exp-role">Software Engineer</div>
+        </div>
+        <div class="exp-badge">
+          <span class="pulse"></span>
+          Jan 2024 — Present &nbsp;·&nbsp; <span id="exp-dur">–</span>
         </div>
       </div>
-      <div class="exp-period">Jan 2024 — Present</div>
+      <p class="exp-txt">
+        Designed and shipped production-grade backend systems and REST APIs across multiple domains. Built real-time layers with Django Channels, WebSockets, and Redis. Integrated AWS, Google Speech API, smart cameras, and thermal printers. Automated pipelines with Celery, managed Docker deployments on Linux, secured systems with JWT and RBAC.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Django</span><span class="tag">DRF</span>
+        <span class="tag">Django Channels</span><span class="tag">WebSockets</span>
+        <span class="tag">Redis</span><span class="tag">Celery</span>
+        <span class="tag">PostgreSQL</span><span class="tag">Docker</span>
+        <span class="tag">AWS</span><span class="tag">JWT · RBAC</span><span class="tag">OpenCV</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section class="sec" id="projects">
-  <div class="container">
-    <div class="sec-eyebrow">Built</div>
+  <div class="wrap">
+    <div class="eyebrow">Built</div>
     <h2 class="sec-title">Projects</h2>
-    <div class="projects-grid">
+    <div class="tl">
 
-      <div class="proj-card">
-        <div class="proj-head">
-          <div class="proj-icon"><i class="fa-solid fa-square-parking"></i></div>
-          <div class="proj-links"><a href="https://github.com/VALIJONY" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-        </div>
-        <div class="proj-name">Smart Auto Park Management</div>
-        <div class="proj-desc">Intelligent parking platform with automated license plate detection via OpenCV, real-time admin dashboard over WebSockets, automated fee calculation, and thermal receipt printing.</div>
-        <div class="proj-tags">
-          <span class="tag">Django Channels</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">WebSockets</span>
-          <span class="tag">Redis</span>
-          <span class="tag">PostgreSQL</span>
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div class="tl-name">Smart Auto Park Management</div>
+            <span class="tl-role-badge">Full-Stack Engineer</span>
+          </div>
+          <p class="tl-desc">Intelligent parking platform integrated with smart camera hardware — license plate recognition, live monitoring, and automated on-site billing.</p>
+          <ul class="bullets">
+            <li>Automated vehicle plate recognition via OpenCV + smart camera hardware</li>
+            <li>Real-time admin dashboard with live WebSocket updates</li>
+            <li>Automated fee engine based on entry/exit duration tracking</li>
+            <li>Thermal receipt printer integration for cashier workflow</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="tag">Django Channels</span><span class="tag">OpenCV</span>
+            <span class="tag">WebSockets</span><span class="tag">Redis</span>
+            <span class="tag">PostgreSQL</span><span class="tag">Hardware</span>
+          </div>
         </div>
       </div>
 
-      <div class="proj-card">
-        <div class="proj-head">
-          <div class="proj-icon"><i class="fa-solid fa-utensils"></i></div>
-          <div class="proj-links"><a href="https://github.com/VALIJONY" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-        </div>
-        <div class="proj-name">F12 Kitchen</div>
-        <div class="proj-desc">Multi-role restaurant management ecosystem — admins, chefs, waiters, cashiers, delivery. Real-time kitchen monitoring, voice order announcement via Google Speech, Celery async tasks.</div>
-        <div class="proj-tags">
-          <span class="tag">Django</span>
-          <span class="tag">Celery</span>
-          <span class="tag">Google Speech</span>
-          <span class="tag">WebSockets</span>
-          <span class="tag">RBAC</span>
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div class="tl-name">F12 Kitchen — Restaurant Platform</div>
+            <span class="tl-role-badge">Full-Stack Engineer</span>
+          </div>
+          <p class="tl-desc">Multi-role restaurant ecosystem for admins, chefs, waiters, cashiers, and delivery with real-time order processing across all departments.</p>
+          <ul class="bullets">
+            <li>Live kitchen order monitoring via WebSockets</li>
+            <li>Voice order announcements via Google Speech API</li>
+            <li>5-role RBAC system covering all staff types</li>
+            <li>Async background tasks and email queues via Celery</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="tag">Django</span><span class="tag">Celery</span>
+            <span class="tag">Google Speech</span><span class="tag">WebSockets</span>
+            <span class="tag">Redis</span><span class="tag">RBAC</span>
+          </div>
         </div>
       </div>
 
-      <div class="proj-card">
-        <div class="proj-head">
-          <div class="proj-icon"><i class="fa-solid fa-brain"></i></div>
-          <div class="proj-links"><a href="https://github.com/VALIJONY" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-        </div>
-        <div class="proj-name">SMMXodimAi</div>
-        <div class="proj-desc">AI-powered SMM SaaS for the Uzbek market. Instagram publishing via Meta Graph API, Gemini-powered analytics dashboard, Kling AI video generation, Uzbek voiceover with edge-tts.</div>
-        <div class="proj-tags">
-          <span class="tag">Django</span>
-          <span class="tag">Next.js</span>
-          <span class="tag">Gemini AI</span>
-          <span class="tag">Instagram API</span>
-          <span class="tag">DRF</span>
+      <div class="tl-item">
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-head">
+            <div class="tl-name">SMMXodimAi — AI SMM Platform</div>
+            <span class="tl-role-badge">Founder & Engineer</span>
+          </div>
+          <p class="tl-desc">AI-powered social media management SaaS for the Uzbek and CIS market — automated content creation, publishing, and performance analytics.</p>
+          <ul class="bullets">
+            <li>Instagram publishing via Meta Graph API with OAuth 2.0</li>
+            <li>Gemini-powered analytics dashboard for post insights</li>
+            <li>Kling AI video generation for Reels and Stories</li>
+            <li>Uzbek voiceover generation using edge-tts</li>
+          </ul>
+          <div class="proj-tags">
+            <span class="tag">Django</span><span class="tag">Next.js</span>
+            <span class="tag">Gemini AI</span><span class="tag">Instagram API</span>
+            <span class="tag">DRF</span><span class="tag">edge-tts</span>
+          </div>
         </div>
       </div>
 
@@ -424,196 +442,167 @@ footer span{color:var(--blue)}
 
 <!-- SKILLS -->
 <section class="sec" id="skills">
-  <div class="container">
-    <div class="sec-eyebrow">Stack</div>
+  <div class="wrap">
+    <div class="eyebrow">Stack</div>
     <h2 class="sec-title">Skills &amp; Tools</h2>
-    <div class="skills-sections">
-
-      <div class="skill-group">
-        <div class="skill-group-title">Backend</div>
-        <div class="skill-list">
-          <div class="skill-row"><i class="fa-brands fa-python"></i> Python (Advanced)</div>
-          <div class="skill-row"><i class="fa-solid fa-layer-group"></i> Django & DRF</div>
-          <div class="skill-row"><i class="fa-solid fa-bolt"></i> FastAPI</div>
-          <div class="skill-row"><i class="fa-solid fa-robot"></i> Aiogram (Telegram)</div>
+    <div class="sk-grid">
+      <div class="sk-box">
+        <div class="sk-title">Backend</div>
+        <div class="sk-list">
+          <div class="sk-row"><i class="fa-brands fa-python"></i>Python (Advanced)</div>
+          <div class="sk-row"><i class="fa-solid fa-layer-group"></i>Django & DRF</div>
+          <div class="sk-row"><i class="fa-solid fa-bolt"></i>FastAPI</div>
+          <div class="sk-row"><i class="fa-solid fa-robot"></i>Aiogram</div>
         </div>
       </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Real-time & Async</div>
-        <div class="skill-list">
-          <div class="skill-row"><i class="fa-solid fa-plug"></i> Django Channels</div>
-          <div class="skill-row"><i class="fa-solid fa-arrows-rotate"></i> WebSockets</div>
-          <div class="skill-row"><i class="fa-solid fa-database"></i> Redis Pub/Sub</div>
-          <div class="skill-row"><i class="fa-solid fa-clock"></i> Celery</div>
+      <div class="sk-box">
+        <div class="sk-title">Real-time & Async</div>
+        <div class="sk-list">
+          <div class="sk-row"><i class="fa-solid fa-plug"></i>Django Channels</div>
+          <div class="sk-row"><i class="fa-solid fa-arrows-rotate"></i>WebSockets</div>
+          <div class="sk-row"><i class="fa-solid fa-server"></i>Redis Pub/Sub</div>
+          <div class="sk-row"><i class="fa-solid fa-clock"></i>Celery</div>
         </div>
       </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Frontend</div>
-        <div class="skill-list">
-          <div class="skill-row"><i class="fa-brands fa-react"></i> React & Next.js</div>
-          <div class="skill-row"><i class="fa-brands fa-html5"></i> HTML5 & Tailwind CSS</div>
-          <div class="skill-row"><i class="fa-solid fa-code"></i> Jinja2</div>
+      <div class="sk-box">
+        <div class="sk-title">Frontend</div>
+        <div class="sk-list">
+          <div class="sk-row"><i class="fa-brands fa-react"></i>React & Next.js</div>
+          <div class="sk-row"><i class="fa-brands fa-html5"></i>HTML5 & Tailwind CSS</div>
+          <div class="sk-row"><i class="fa-solid fa-code"></i>Bootstrap & Jinja2</div>
         </div>
       </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">Database</div>
-        <div class="skill-list">
-          <div class="skill-row"><i class="fa-solid fa-database"></i> PostgreSQL</div>
-          <div class="skill-row"><i class="fa-solid fa-server"></i> MySQL & MongoDB</div>
-          <div class="skill-row"><i class="fa-solid fa-memory"></i> Redis & SQLite</div>
+      <div class="sk-box">
+        <div class="sk-title">Database</div>
+        <div class="sk-list">
+          <div class="sk-row"><i class="fa-solid fa-database"></i>PostgreSQL & MySQL</div>
+          <div class="sk-row"><i class="fa-solid fa-leaf"></i>MongoDB</div>
+          <div class="sk-row"><i class="fa-solid fa-memory"></i>Redis & SQLite</div>
         </div>
       </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">DevOps & Cloud</div>
-        <div class="skill-list">
-          <div class="skill-row"><i class="fa-brands fa-docker"></i> Docker</div>
-          <div class="skill-row"><i class="fa-brands fa-aws"></i> AWS Lightsail</div>
-          <div class="skill-row"><i class="fa-brands fa-linux"></i> Linux</div>
-          <div class="skill-row"><i class="fa-brands fa-git-alt"></i> Git & GitHub</div>
+      <div class="sk-box">
+        <div class="sk-title">DevOps & Cloud</div>
+        <div class="sk-list">
+          <div class="sk-row"><i class="fa-brands fa-docker"></i>Docker</div>
+          <div class="sk-row"><i class="fa-brands fa-aws"></i>AWS Lightsail</div>
+          <div class="sk-row"><i class="fa-brands fa-linux"></i>Linux</div>
+          <div class="sk-row"><i class="fa-brands fa-git-alt"></i>Git & GitHub</div>
         </div>
       </div>
-
-      <div class="skill-group">
-        <div class="skill-group-title">AI & Vision</div>
-        <div class="skill-list">
-          <div class="skill-row"><i class="fa-solid fa-eye"></i> OpenCV & MediaPipe</div>
-          <div class="skill-row"><i class="fa-solid fa-microchip"></i> Prompt Engineering</div>
-          <div class="skill-row"><i class="fa-solid fa-chart-line"></i> Pandas & NumPy</div>
-          <div class="skill-row"><i class="fa-brands fa-google"></i> Google Speech API</div>
+      <div class="sk-box">
+        <div class="sk-title">AI & Vision</div>
+        <div class="sk-list">
+          <div class="sk-row"><i class="fa-solid fa-eye"></i>OpenCV & MediaPipe</div>
+          <div class="sk-row"><i class="fa-solid fa-microchip"></i>Prompt Engineering</div>
+          <div class="sk-row"><i class="fa-solid fa-chart-line"></i>Pandas & NumPy</div>
+          <div class="sk-row"><i class="fa-brands fa-google"></i>Google Speech API</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="sec" id="contact">
-  <div class="container">
-    <div class="sec-eyebrow">Let's talk</div>
+  <div class="wrap">
+    <div class="eyebrow">Get in touch</div>
     <h2 class="sec-title">Contact</h2>
-    <div class="contact-grid">
+    <div class="ct-grid">
       <div>
-        <p class="contact-intro">Open to freelance projects, backend consulting, and full-time opportunities — especially in the CIS market. Reach out through any channel below.</p>
-        <div class="contact-links">
+        <p class="ct-intro">Open to freelance projects, backend consulting, and full-time roles — especially in the CIS market. Pick a channel below and let's talk.</p>
+        <div class="ct-links">
           <a href="mailto:valijondosov@gmail.com" class="clink">
-            <i class="fa-solid fa-envelope"></i>
-            valijondosov@gmail.com
-            <span class="clink-sub">Email</span>
+            <i class="fa-solid fa-envelope"></i> valijondosov@gmail.com
+            <span class="clink-tag">Email</span>
           </a>
           <a href="https://t.me/BUSSINES_KING" target="_blank" class="clink">
-            <i class="fa-brands fa-telegram"></i>
-            @BUSSINES_KING
-            <span class="clink-sub">Telegram</span>
+            <i class="fa-brands fa-telegram"></i> @BUSSINES_KING
+            <span class="clink-tag">Telegram</span>
           </a>
           <a href="https://github.com/VALIJONY" target="_blank" class="clink">
-            <i class="fa-brands fa-github"></i>
-            github.com/VALIJONY
-            <span class="clink-sub">GitHub</span>
+            <i class="fa-brands fa-github"></i> github.com/VALIJONY
+            <span class="clink-tag">GitHub</span>
           </a>
           <a href="tel:+998885647767" class="clink">
-            <i class="fa-solid fa-phone"></i>
-            +998 88 564 77 67
-            <span class="clink-sub">Phone</span>
+            <i class="fa-solid fa-phone"></i> +998 88 564 77 67
+            <span class="clink-tag">Phone</span>
           </a>
         </div>
       </div>
-
       <div class="term">
         <div class="term-bar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-          <div class="term-label">valijon@dosov — zsh</div>
+          <div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div>
+          <div class="term-t">valijon@dosov — zsh</div>
         </div>
         <div class="term-body">
-          <div><span class="tp">❯ </span><span class="tc">cat profile.json</span></div>
+          <div><span class="tp">❯ </span><span class="tc">cat me.json</span></div>
           <div class="to">{</div>
           <div class="to">&nbsp;&nbsp;"name": <span class="tv">"Valijon Do'sov"</span>,</div>
           <div class="to">&nbsp;&nbsp;"role": <span class="tv">"Backend Developer"</span>,</div>
-          <div class="to">&nbsp;&nbsp;"experience": <span class="tv">"2+ years"</span>,</div>
-          <div class="to">&nbsp;&nbsp;"location": <span class="tv">"Urgench, UZ"</span>,</div>
+          <div class="to">&nbsp;&nbsp;"exp": <span class="tv" id="term-exp">"–"</span>,</div>
+          <div class="to">&nbsp;&nbsp;"city": <span class="tv">"Urgench, UZ"</span>,</div>
           <div class="to">&nbsp;&nbsp;"stack": <span class="ts">["Django","DRF","Next.js"]</span>,</div>
-          <div class="to">&nbsp;&nbsp;"open_to_work": <span class="tv">true</span></div>
+          <div class="to">&nbsp;&nbsp;"hire": <span class="ts">true</span></div>
           <div class="to">}</div>
           <br>
-          <div><span class="tp">❯ </span><span class="tc">echo $STATUS</span></div>
-          <div class="ts">Ready for new challenges ✓</div>
+          <div><span class="tp">❯ </span><span class="tc">echo $READY</span></div>
+          <div class="ts">Available now ✓</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div>© 2026 <span>Valijon Do‘sov</span></div>
+  <div>© <span id="yr"></span> <span>Valijon Do'sov</span></div>
   <div>Urgench, Uzbekistan · <span>Backend Developer</span></div>
 </footer>
 
-<!-- TYPING ANIMATION -->
 <script>
-const fullName = "Valijon Do'sov";
-const el = document.getElementById('typed-name');
-const cursor = document.getElementById('cursor');
-
-// Phase config
-const phases = [
-  { text: fullName, action: 'type', delay: 90 },
-  { text: '', action: 'pause', delay: 1800 },
-  { text: fullName, action: 'delete', delay: 55 },
-  { text: '', action: 'pause', delay: 600 },
-];
-
-let phaseIndex = 0;
-let charIndex = 0;
-
-function runPhase() {
-  const phase = phases[phaseIndex];
-
-  if (phase.action === 'pause') {
-    setTimeout(() => {
-      phaseIndex = (phaseIndex + 1) % phases.length;
-      charIndex = phase.action === 'pause' && phases[phaseIndex].action === 'delete'
-        ? fullName.length : 0;
-      runPhase();
-    }, phase.delay);
-    return;
+// ── TYPING ──
+const NAME = "Valijon Do'sov";
+const el = document.getElementById('typed');
+let phase = 'type', i = 0;
+function tick() {
+  if (phase === 'type') {
+    el.textContent = NAME.slice(0, i++);
+    if (i > NAME.length) { phase = 'hold'; return setTimeout(tick, 2400); }
+    return setTimeout(tick, 80 + Math.random() * 50);
   }
-
-  if (phase.action === 'type') {
-    if (charIndex <= fullName.length) {
-      el.textContent = fullName.slice(0, charIndex);
-      charIndex++;
-      setTimeout(runPhase, phase.delay + Math.random() * 40);
-    } else {
-      phaseIndex = (phaseIndex + 1) % phases.length;
-      runPhase();
-    }
-    return;
+  if (phase === 'hold') { phase = 'del'; return setTimeout(tick, 0); }
+  if (phase === 'del') {
+    el.textContent = NAME.slice(0, i--);
+    if (i < 0) { phase = 'wait'; return setTimeout(tick, 700); }
+    return setTimeout(tick, 45);
   }
-
-  if (phase.action === 'delete') {
-    if (charIndex >= 0) {
-      el.textContent = fullName.slice(0, charIndex);
-      charIndex--;
-      setTimeout(runPhase, phase.delay);
-    } else {
-      phaseIndex = (phaseIndex + 1) % phases.length;
-      charIndex = 0;
-      runPhase();
-    }
-    return;
-  }
+  if (phase === 'wait') { phase = 'type'; i = 0; return setTimeout(tick, 0); }
 }
+setTimeout(tick, 500);
 
-// Start after short delay
-setTimeout(runPhase, 400);
+// ── LIVE COUNTERS ──
+const START = new Date('2024-12-01');
+function update() {
+  const now  = new Date();
+  const ms   = now - START;
+  const days = Math.floor(ms / 86400000);
+  const mos  = Math.floor(ms / (86400000 * 30.44));
+  const yrs  = (ms / (86400000 * 365.25));
+
+  document.getElementById('cnt-mo').textContent   = mos;
+  document.getElementById('cnt-days').textContent = days;
+
+  // friendly text for exp badge
+  const y = Math.floor(yrs), m = mos % 12;
+  const dur = y > 0
+    ? `${y} yr${y>1?'s':''} ${m > 0 ? m+' mo' : ''}`.trim()
+    : `${mos} months`;
+  document.getElementById('exp-dur').textContent  = dur;
+  document.getElementById('term-exp').textContent = `"${y > 0 ? '~'+y+' yr'+y+'s' : mos+' months'}"`;
+}
+update();
+setInterval(update, 60000);
+
+document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
