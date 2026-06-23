@@ -1,0 +1,138 @@
+cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valijon - Python Developer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0d1117; color: #e6edf3; }
+        
+        nav { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #21262d; position: sticky; top: 0; background: #0d1117; z-index: 100; }
+        nav .logo { font-size: 1.3rem; font-weight: 700; color: #58a6ff; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav ul a { color: #e6edf3; text-decoration: none; font-size: 0.9rem; }
+        nav ul a:hover { color: #58a6ff; }
+
+        .hero { text-align: center; padding: 100px 20px 80px; }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; }
+        .hero h1 span { color: #58a6ff; }
+        .hero p { font-size: 1.1rem; color: #8b949e; max-width: 500px; margin: 0 auto 30px; }
+        .hero .btns { display: flex; gap: 16px; justify-content: center; }
+        .btn { padding: 12px 28px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: 0.2s; }
+        .btn-primary { background: #238636; color: white; border: 1px solid #2ea043; }
+        .btn-primary:hover { background: #2ea043; }
+        .btn-outline { border: 1px solid #30363d; color: #e6edf3; }
+        .btn-outline:hover { border-color: #58a6ff; color: #58a6ff; }
+
+        .section { padding: 80px 40px; max-width: 1000px; margin: 0 auto; }
+        .section h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 40px; text-align: center; }
+        .section h2 span { color: #58a6ff; }
+
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+        .skill-tag { background: #161b22; border: 1px solid #30363d; padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; color: #58a6ff; }
+
+        .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; transition: 0.2s; }
+        .card:hover { border-color: #58a6ff; transform: translateY(-4px); }
+        .card-icon { font-size: 2rem; margin-bottom: 16px; }
+        .card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .card p { color: #8b949e; font-size: 0.9rem; line-height: 1.6; }
+        .card .tags { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .card .tags span { background: #0d1117; border: 1px solid #21262d; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; color: #8b949e; }
+
+        .contact-box { background: #161b22; border: 1px solid #30363d; border-radius: 16px; padding: 48px; text-align: center; }
+        .contact-box p { color: #8b949e; margin-bottom: 28px; }
+        .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .contact-link { display: flex; align-items: center; gap: 8px; padding: 12px 24px; background: #0d1117; border: 1px solid #30363d; border-radius: 8px; text-decoration: none; color: #e6edf3; font-size: 0.9rem; transition: 0.2s; }
+        .contact-link:hover { border-color: #58a6ff; color: #58a6ff; }
+
+        footer { text-align: center; padding: 30px; color: #8b949e; font-size: 0.85rem; border-top: 1px solid #21262d; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">&lt;Valijon /&gt;</div>
+    <ul>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Proyektlar</a></li>
+        <li><a href="#contact">Aloqa</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <h1>Salom, men <span>Valijon</span> 👋</h1>
+    <p>Python & Django Developer. CIS bozori uchun real veb-ilovalar va AI yechimlar yarataman.</p>
+    <div class="btns">
+        <a href="#projects" class="btn btn-primary">Proyektlarim</a>
+        <a href="https://github.com/valijony" class="btn btn-outline">GitHub</a>
+    </div>
+</div>
+
+<div class="section" id="skills">
+    <h2>Texnologiya <span>Stack</span></h2>
+    <div class="skills-grid">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">Django REST Framework</span>
+        <span class="skill-tag">Next.js</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">OpenCV</span>
+        <span class="skill-tag">MediaPipe</span>
+    </div>
+</div>
+
+<div class="section" id="projects">
+    <h2>Mening <span>Proyektlarim</span></h2>
+    <div class="projects">
+        <div class="card">
+            <div class="card-icon">🍽️</div>
+            <h3>F12 Kitchen</h3>
+            <p>Restoran boshqaruv tizimi. Buyurtmalar, menyular va xodimlarni boshqarish uchun to'liq yechim.</p>
+            <div class="tags">
+                <span>Django</span><span>DRF</span><span>PostgreSQL</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🅿️</div>
+            <h3>Parking Management</h3>
+            <p>Avtomobil to'xtash joylarini boshqarish tizimi. Avtomatik hisob-kitob va monitoring.</p>
+            <div class="tags">
+                <span>Django</span><span>Python</span><span>REST API</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>SMMXodimAi</h3>
+            <p>O'zbek bozori uchun AI-powered SMM platforma. Instagram publishing va Gemini analytics.</p>
+            <div class="tags">
+                <span>Django</span><span>Next.js</span><span>AI</span><span>Instagram API</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section" id="contact">
+    <h2>Bog'lanish <span>Uchun</span></h2>
+    <div class="contact-box">
+        <p>Yangi loyiha yoki hamkorlik uchun murojaat qiling!</p>
+        <div class="contact-links">
+            <a href="https://github.com/valijony" class="contact-link">🐙 GitHub</a>
+            <a href="https://t.me/bussines_king" class="contact-link">✈️ Telegram</a>
+            <a href="https://www.fiverr.com/valijondev_py" class="contact-link">💼 Fiverr</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Valijon | Python Developer | Urgench, Uzbekistan</p>
+</footer>
+
+</body>
+</html>
+EOF
