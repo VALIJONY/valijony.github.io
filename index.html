@@ -315,8 +315,7 @@ var CONTACT = {
   email:'valijondosov@gmail.com',
   telegram:'BUSSINES_KING',
   github:'VALIJONY',
-  phone:'+998 88 564 77 67',
-  fiverr:'valijondev_py'
+  phone:'+998 88 564 77 67'
 };
 
 var NAV = [
@@ -491,9 +490,6 @@ var I = {
   b3:{uz:"Celery bilan avtomatlashtirilgan pipeline'lar, Docker orqali deploy", en:'Automated pipelines with Celery; Docker deployments', ru:'Автоматизация пайплайнов на Celery, деплой через Docker'},
   b4:{uz:"JWT / RBAC asosidagi xavfsizlik", en:'JWT / RBAC security', ru:'Безопасность на JWT / RBAC'},
   b5:{uz:"Kamera, termoprinter va Raspberry Pi bilan hardware integratsiya", en:'Hardware integration with cameras, thermal printers and Raspberry Pi', ru:'Интеграция с камерами, термопринтерами и Raspberry Pi'},
-  flT:{uz:'Frilans', en:'Freelance', ru:'Фриланс'},
-  flP:{uz:"Fiverr'da Django REST API va Telegram bot ishlab chiqish xizmatlari.", en:'Django REST API and Telegram bot development services on Fiverr.', ru:'Разработка Django REST API и Telegram-ботов на Fiverr.'},
-  remote:{uz:'masofaviy', en:'remote', ru:'удалённо'},
 
   edT:{uz:"Ta'lim", en:'Education', ru:'Образование'},
   edP:{uz:"Universitet, algoritmlar va ilmiy ish.", en:'University, algorithms and research.', ru:'Университет, алгоритмы и научная работа.'},
@@ -567,7 +563,6 @@ function vHome(){
       '<div class="socials">' +
         '<a href="https://github.com/' + CONTACT.github + '" target="_blank" rel="noopener">GitHub</a>' +
         '<a href="https://t.me/' + CONTACT.telegram + '" target="_blank" rel="noopener">Telegram</a>' +
-        '<a href="https://www.fiverr.com/' + CONTACT.fiverr + '" target="_blank" rel="noopener">Fiverr</a>' +
         '<a href="mailto:' + CONTACT.email + '">Email</a>' +
       '</div>' +
       '<div class="counters">' +
@@ -664,12 +659,6 @@ function vExp(){
         '<ul><li>' + esc(t(I.b1)) + '</li><li>' + esc(t(I.b2)) + '</li><li>' + esc(t(I.b3)) + '</li><li>' + esc(t(I.b4)) + '</li><li>' + esc(t(I.b5)) + '</li></ul>' +
         '<div class="chips">' + stack.map(function(s){ return '<span class="chip">' + s + '</span>'; }).join('') + '</div>' +
       '</article>' +
-      '<article class="tl-item">' +
-        '<div class="tl-meta"><span class="when">Fiverr</span><span>' + esc(t(I.remote)) + '</span></div>' +
-        '<h3>' + esc(t(I.flT)) + '</h3><div class="org">@ fiverr.com/' + CONTACT.fiverr + '</div>' +
-        '<p>' + esc(t(I.flP)) + '</p>' +
-        '<div class="chips"><span class="chip">Django REST</span><span class="chip">aiogram</span><span class="chip">PostgreSQL</span></div>' +
-      '</article>' +
     '</div>' + band() + '</section>';
 }
 
@@ -696,7 +685,6 @@ function vContact(){
         item('Telegram', '@' + CONTACT.telegram, 'https://t.me/' + CONTACT.telegram, true) +
         item('GitHub', 'github.com/' + CONTACT.github, 'https://github.com/' + CONTACT.github, true) +
         item(t(I.phone), CONTACT.phone, 'tel:' + CONTACT.phone.replace(/\s/g, '')) +
-        item('Fiverr', CONTACT.fiverr, 'https://www.fiverr.com/' + CONTACT.fiverr, true) +
       '</div>' +
       '<div class="win"><div class="win-bar"><i></i><i></i><i></i><span>~/aloqa/new_message.sh</span></div>' +
         '<form class="form" id="mailForm">' +
